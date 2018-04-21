@@ -8,13 +8,13 @@
   <ion-content>
     <div class="profile">
       <img src="https://image.flaticon.com/icons/png/512/190/190624.png" id="icon" style="width:125px">
-      <h1 class="name"> Officer Leo </h1>
-      <h2 class="name"> Badge #0000 </h2>
+      <h1 class="h1-menu"> Officer Leo </h1>
+      <h2 class="h2-menu"> Badge #0000 </h2>
     </div>
 
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        <ion-icon name="{{p.icon}}"></ion-icon>{{p.title}}
+        <ion-icon class="page-icon" name="{{p.icon}}"></ion-icon>{{p.title}}
       </button>
     </ion-list>
   </ion-content>

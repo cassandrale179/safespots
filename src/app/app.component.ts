@@ -25,7 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'List of Safe Buildings', component: HomePage, icon: "star" },
       { title: 'Map of Safe Buildings', component: ListPage, icon:"paper-plane" },
-      { title: 'Shooter Location', component: ShooterPage, icon: "thumbs-up" }
+      { title: 'Clear Buildings', component: ShooterPage, icon: "thumbs-up" }
     ];
 
   }
