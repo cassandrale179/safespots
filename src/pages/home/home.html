@@ -19,7 +19,7 @@
 
   <!-- ___________ DISPLAY LIST OF FIRES  ___________ -->
   <ion-list>
-    <ion-label style="color: #922B21; font-size: 20px">
+    <ion-label style="color: #922B21; font-size: 20px" class="animated bounceInLeft">
         <b>Address of safe buildings</b>
     </ion-label>
 
@@ -29,15 +29,15 @@
         <h2 style="width: 70%" class="animated fadeInDownBig">{{building.name}}</h2>
 
         <div id="fire-info">
-          <p style="margin-right: 180px !important">{{building.address}}</p>
+          <p style="margin-right: 180px !important"  class="animated fadeInDownBig">{{building.address}}</p>
       </div>
 
         <div id="fire-info">
-            <p style="margin-right: 180px !important">{{building.distance}} miles</p>
+            <p style="margin-right: 180px !important"  class="animated fadeInDownBig">{{building.distance}} miles</p>
         </div>
 
 
-        <ion-icon style="color: #922B21" name="walk" item-end></ion-icon>
+        <ion-icon style="color: #922B21" name="walk"  class="animated fadeInDownBig" item-end></ion-icon>
 
 
       </ion-item>
@@ -50,6 +50,6 @@
     </ion-item-sliding>
   </ion-list>
 
-  <p class="p-info"><i>Swipe item for more options.</i></p>
+  <p class="p-info" class="animated bounceInLeft" ><i>Swipe item for more options.</i></p>
 
 </ion-content>
