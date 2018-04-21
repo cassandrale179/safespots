@@ -15,7 +15,7 @@ export class ListPage {
   items: Array<{title: string, note: string, icon: string}>;
 
   @ViewChild('gmap') gmapElement: any;
-  fireMap: google.maps.Map;
+  buildingMap: google.maps.Map;
   marker: google.maps.Marker;
   mylatlang = google.maps.LatLng;
   hydrantsArr: any;
@@ -34,8 +34,8 @@ export class ListPage {
           zoom: 15,
           mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    this.fireMap = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-    let markerData = this.afData.list(`fires`).valueChanges();
+    this.buildingMap = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+    let markerData = this.afData.list(`buildings`).valueChanges();
     markerData.subscribe(markerArr=> {
         markerArr.forEach(markerInfo=> {
             console.log(markerInfo);
@@ -43,7 +43,7 @@ export class ListPage {
             let lng = markerInfo['lng']
             let marker = new google.maps.Marker({
                 position: new google.maps.LatLng(lat, lng),
-                map: this.fireMap
+                map: this.buildingMap
             })
 
         })
