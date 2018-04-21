@@ -42,16 +42,20 @@ export class AutocompletePage {
 
     returnNewLocation(){
         try{
+        
             var address = this.autocomplete.getPlace();
-            var longLat = address.geometry.location.lng() + ", " + address.geometry.location.lat();
+            // console.log("address", address);
+            // console.log(address.name);
+            // var longLat = address.geometry.location.lng() + ", " + address.geometry.location.lat();
 
-            console.log("location", address);
-            console.log("longLat", longLat);
+            // console.log("location", address);
+            // console.log("longLat", longLat);
 
             let obj = {
               address: address.formatted_address,
               lat: address.geometry.location.lat(),
-              lng: address.geometry.location.lng()
+              lng: address.geometry.location.lng(),
+              name: address.name
             }
 
             this.viewCtrl.dismiss(obj);

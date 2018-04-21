@@ -19,13 +19,13 @@ export class HomePage {
     //----- LIST OF VARIABLES -------
     longitude: any;
     latitude: any;
-    fires$: any;
+    buildings$: any;
     hydData: any;
     bestHyd: {
       id: number,
       dist: number,
     };
-    fireArr: any[];
+    buildingArr: any[];
 
 
 //-------- CONSTRUCTOR FOR CALCULATING THE HOME.TS PAGE -----------
@@ -37,49 +37,49 @@ export class HomePage {
     private alertCtrl: AlertController,
     private LaunchNavigator: LaunchNavigator) {
 
-    //--------- LOAD ALL THE FIRE HYDRANTS ----------
-    this.loadFires(39.9565273, -75.1907409);
+    //--------- LOAD ALL THE BUILDINGS ----------
+    this.loadBuildings(40.5252208, -74.4411696);
 
     //--------- GET LOCATION --------
-    this.getLocation();
+    // this.getLocation();
     //this.calcBest();
   }
 
 
-  async calcBest(){
+  // async calcBest(){
 
 
 //----------------- LOAD ALL THE FIRE HYDRANTS AND THEN CALCUALTE BETWEEN TWO DISTANCES ------------
-   await this.afData.database.ref('firehydrants').once('value',dataSnap =>{
-      this.hydData = dataSnap.val();
-    })
+  //  await this.afData.database.ref('firehydrants').once('value',dataSnap =>{
+  //     this.hydData = dataSnap.val();
+  //   })
 
-        console.log(this.latitude);
-        console.log(this.longitude);
+  //       console.log(this.latitude);
+  //       console.log(this.longitude);
 
-        if (!this.latitude) this.latitude = 39.9644620;
-        if (!this.longitude) this.longitude = -75.207807;
+  //       if (!this.latitude) this.latitude = 39.9644620;
+  //       if (!this.longitude) this.longitude = -75.207807;
 
 
 
         //--------------- LOOP THROUGH THE FIRE HYDRANT DATA AND THEN CALCUALTE THE DIFFERENCES --------
-        for(var i in this.hydData){
-            var curDist = this.calculateDistance(this.latitude,this.longitude,this.hydData[i].lat,this.hydData[i].lng);
-            if (!this.bestHyd){
-              this.bestHyd = {
-                dist: curDist,
-                id: parseInt(i)
-              }
-            }
-            else {
-              if(curDist < this.bestHyd.dist){
-                this.bestHyd['dist'] = curDist
-                this.bestHyd['id'] = parseInt(i);
-              }
-            }
-      }
-      console.log("best one is here", this.bestHyd);
-  }
+  //       for(var i in this.hydData){
+  //           var curDist = this.calculateDistance(this.latitude,this.longitude,this.hydData[i].lat,this.hydData[i].lng);
+  //           if (!this.bestHyd){
+  //             this.bestHyd = {
+  //               dist: curDist,
+  //               id: parseInt(i)
+  //             }
+  //           }
+  //           else {
+  //             if(curDist < this.bestHyd.dist){
+  //               this.bestHyd['dist'] = curDist
+  //               this.bestHyd['id'] = parseInt(i);
+  //             }
+  //           }
+  //     }
+  //     console.log("best one is here", this.bestHyd);
+  // }
 
   //------------ OPEN MODAL FOR THE PAGES --------
   openModal(){
@@ -88,21 +88,22 @@ export class HomePage {
     autocompleteModal.onDidDismiss(data=> {
       if (data){
         let addressData = data;
-        this.createFire(addressData);
+        this.createBuilding(addressData);
       }
     })
   }
 
 
   //------------- CREATE FIRE -------------
-  createFire(addressData) {
-    let ref = this.afData.database.ref(`fires`)
+  createBuilding(addressData) {
+    let ref = this.afData.database.ref(`buildings`)
     let key = ref.push().key
     let obj = {
       address: addressData.address,
       lat: addressData.lat,
       lng: addressData.lng,
-      id: key
+      id: key,
+      name: addressData.name
     }
     ref.child(key).update(obj);
   }
@@ -117,10 +118,10 @@ export class HomePage {
      this.longitude = resp.coords.longitude;
      this.latitude = resp.coords.latitude;
      console.log("Finished getting geolocation");
-     this.loadFires(this.latitude, this.longitude)
+     this.loadBuildings(this.latitude, this.longitude)
 
 
-     this.calcBest();
+    //  this.calcBest();
      console.log("HO",this.longitude,this.latitude);
      // resp.coords.longitude
     }).catch((error) => {
@@ -129,24 +130,20 @@ export class HomePage {
   }
 
   //-----------Calculate how far away the fire is
-  loadFires(lat, lng) {
-      this.fires$ = this.afData.list("fires").valueChanges();
-      this.fires$.subscribe(fireArr=> {
-        this.fireArr = fireArr;
-        this.fireArr.forEach(fire=>{
-          let fireLat = fire.lat
-          let fireLng = fire.lng
-          fire.count = 0;
+  loadBuildings(lat, lng) {
+      this.buildings$ = this.afData.list("buildings").valueChanges();
+      this.buildings$.subscribe(buildingArr=> {
+        this.buildingArr = buildingArr;
+        this.buildingArr.forEach(building=>{
+          let buildingLat = building.lat
+          let buildingLng = building.lng
+          building.count = 0;
 
-          if (fire.hydrants){
-              let count = Object.keys(fire.hydrants).length;
-               fire.count = count;
-          }
-          fire.distance = this.calculateDistance(lat, lng, fireLat, fireLng).toFixed(2);
-          console.log(fire.distance);
+          building.distance = this.calculateDistance(lat, lng, buildingLat, buildingLng).toFixed(2);
+          console.log(building.distance);
         })
 
-        this.fireArr.sort(function(x,y){
+        this.buildingArr.sort(function(x,y){
           return x.distance - y.distance;
         })
       })
@@ -154,14 +151,15 @@ export class HomePage {
 
   }
   //--------- LAUNCH DIRECTION -----------
-  launchDirection(){
+  launchDirection(building){
     console.log('This function is triggered');
+    console.log(building)
       let options: LaunchNavigatorOptions = {
-      start: 'Philadelphia, PA',
+      start: '40.5252208, -74.4411696',
       // app: this.LaunchNavigator.APP
     };
 
-    this.LaunchNavigator.navigate('Toronto, ON', options)
+    this.LaunchNavigator.navigate([building.lat, building.lng], options)
       .then(
         success => console.log('Launched navigator'),
         error => console.log('Error launching navigator', error)
@@ -190,15 +188,12 @@ export class HomePage {
       return deg * (Math.PI/180)
   }
 
-  //------------Open fire detail page
-  openFireDetail(fire){
-    this.navCtrl.push('FireDetailPage', {fire: fire})
-  }
 
 
-  async removeFire(fire){
+
+  async removeBuilding(building){
     let alert = this.alertCtrl.create({
-      title: "Is the fire put out?",
+      title: "Remove building?",
       buttons: [
         {
           text: 'Cancel',
@@ -211,19 +206,8 @@ export class HomePage {
         {
           text: 'OK',
           handler: ()=> {
-            this.afData.database.ref(`fires/${fire.id}/hydrants`).once("value", snap=> {
-              let data = snap.val()
-              if (data){
-                let hydrantIDs = Object.keys(data)
-              hydrantIDs.forEach(id=> {
-                //Remove these hydrants from in use
-                console.log("id of hydrants", id)
-                this.afData.database.ref(`inuse/${id}`).remove();
-              })
-              }
-
-            })
-            this.afData.database.ref(`fires/${fire.id}`).remove();
+          
+            this.afData.database.ref(`buildings/${building.id}`).remove();
 
 
           }
