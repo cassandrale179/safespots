@@ -23,15 +23,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-<<<<<<< HEAD
       { title: 'List of Safe Buildings', component: HomePage, icon: "star" },
       { title: 'Map of Safe Buildings', component: ListPage, icon:"paper-plane" },
       { title: 'Shooter Location', component: ShooterPage, icon: "thumbs-up" }
-=======
-      { title: 'List of Safe Buildings', component: HomePage },
-      { title: 'Map of Safe Buildings', component: ListPage },
-      { title: 'Clear Buildings', component: ShooterPage }
->>>>>>> 26cfd3e2af72799b8412ba137a4a264980c17e9f
     ];
 
   }
