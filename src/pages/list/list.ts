@@ -30,7 +30,7 @@ export class ListPage {
   async ngOnInit() {
 
     var mapProp = {
-         center: new google.maps.LatLng(39.9469827, -75.118225),
+         center: new google.maps.LatLng(40.4995488, -74.4443186),
           zoom: 15,
           mapTypeId: google.maps.MapTypeId.ROADMAP
     };

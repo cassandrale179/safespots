@@ -9,11 +9,11 @@ page-login {
 
         background:
         linear-gradient(
-          rgba(123, 36, 28, 0.50),
-          rgba(123, 36, 28, 0.50)
+          rgba(52, 73, 94, 0.50),
+          rgba(52, 73, 94, 0.50)
         ),
 
-        url('http://phandroid.s3.amazonaws.com/wp-content/uploads/2014/06/forest-patrol.jpg');
+        url('https://i-cdn.phonearena.com/images/articles/272583-image/minimalist-smartphone-wallpapers-07.jpg');
         background-position: 0px bottom;
         background-size: cover;
 
@@ -28,7 +28,7 @@ page-login {
     }
 
     h1{
-        font-size: 130px;
+        font-size: 80px;
     }
 
 
@@ -48,7 +48,7 @@ page-login {
 
     #A{
         padding: 10%;
-        padding-top: 35%;
+        padding-top: 60%;
     }
 
 
@@ -79,8 +79,4 @@ page-login {
     button{
         margin-top: 10px !important;
     }
-
-
-
-
 }
