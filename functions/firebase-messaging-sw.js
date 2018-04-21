@@ -2,7 +2,6 @@ importScripts('https://www.gstatic.com/firebasejs/4.1.1/firebase-app.js');
 importScripts('https://www.gstatic.com/firebasejs/4.1.1/firebase-messaging.js');
 importScripts('https://www.gstatic.com/firebasejs/4.1.1/firebase.js');
 
-
 var config = {
     apiKey: "AIzaSyBKbuAZewGkhTx9tpCW3rPAfVfYN2oW0Vo",
     authDomain: "firehydrant-6dcc5.firebaseapp.com",
