@@ -23,7 +23,7 @@ export class LoginPage {
       var email = badge+"@safespots.com";
       this.afAuth.auth.signInWithEmailAndPassword(email, password).then(success=> {
         this.navCtrl.setRoot(HomePage);
-  
+
       }).catch(err=> {
         this.errorMessage = err.message;
       })
@@ -31,7 +31,7 @@ export class LoginPage {
     else {
       this.errorMessage = "Fill in the required spots.";
     }
-    
+
   }
 
   move(){

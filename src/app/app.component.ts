@@ -25,7 +25,7 @@ export class MyApp {
     this.pages = [
       { title: 'List of Safe Buildings', component: HomePage },
       { title: 'Map of Safe Buildings', component: ListPage },
-      { title: 'Shooter Location', component: ShooterPage }
+      { title: 'Clear Buildings', component: ShooterPage }
     ];
 
   }

@@ -25,27 +25,36 @@ export class ShooterPage {
   //--------- WHEN LOAD, RUN THIS --------
   ionViewDidLoad() {
       this.rooms = [];
-      let obj = {
-          left: 0,
-          right: 0,
-          clear: false
-      }
+
       for (let i = 110; i <= 131; i+=2){
-          obj.left = i;
-          obj.right = i + 1;
+          let obj = {
+              left: i,
+              right: i+1,
+              leftclear: false,
+              rightclear: false
+          }
+
           this.rooms.push(obj);
-          obj = {
-              left: 0,
-              right: 0,
-              clear: false
-          };
+
       }
     console.log('rooms array', this.rooms);
+  }
 
 
-    //------ FUNCTION TO CLEAR ROOMS ------
-    function clearRoom(room){
-        console.log('room', room);
+
+  //------ FUNCTION TO CLEAR ROOMS ------
+  clearRoom(room, boo){
+    if (boo=="left"){
+        room.leftclear = true;
     }
+    else{
+        room.rightclear = true;
+    }
+
+  }
+
+  safeRoom(safeornot){
+      if (safeornot) return '#117A65';
+     
   }
 }
