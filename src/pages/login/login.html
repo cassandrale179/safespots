@@ -18,9 +18,10 @@
       <ion-icon name="walk"></ion-icon>
      <h4>Find safe spots to hide during a school shooting </h4>
     <div id="A">
-        <input type="text" placeholder="Badge ID"/>
-        <input type="password" placeholder="Password"/>
-        <button (click)="move()" ion-button block color="light">Login As Police</button>
+        <p>{{errorMessage}}</p>
+        <input type="text" [(ngModel)]="badge" placeholder="Badge ID"/>
+        <input type="password" [(ngModel)]="password" placeholder="Password"/>
+        <button (click)="login(badge, password)" ion-button block color="light">Login As Police</button>
         <button (click)="move()" ion-button block color="primary">Login As Rutgers Student</button>
     </div>
 </ion-content>

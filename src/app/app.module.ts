@@ -17,6 +17,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 import {AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { IonicStorageModule } from '@ionic/storage'
 
 
@@ -49,6 +50,7 @@ export const firebaseConfig = {
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     HttpClientModule,
     HttpModule,
     IonicStorageModule.forRoot()
