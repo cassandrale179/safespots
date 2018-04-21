@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Shooter Location</ion-title>
+    <ion-title>Clear Buildings</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -12,8 +12,9 @@
     <ion-row align-items-start>
       <ion-col>
 
-        <button (click)="clearRoom(room)" ion-button class="custom"> Room {{room.left}}
-            <!-- <ion-icon name="checkmark"></ion-icon> -->
+        <button [style.background]="safeRoom(room.leftclear)"  (click)="clearRoom(room, 'left')" ion-button class="custom"> Room {{room.left}}
+            <ion-icon *ngIf="room.leftclear" name="checkmark"></ion-icon>
+            <ion-icon *ngIf="!(room.leftclear)" name="close"></ion-icon>
         </button>
       </ion-col>
       <ion-col>
@@ -21,10 +22,16 @@
       <ion-col>
       </ion-col>
       <ion-col>
-         <button (click)="clearRoom(room)" ion-button class="custom"> Room {{room.right}}</button>
+         <button [style.background]="safeRoom(room.rightclear)"  (click)="clearRoom(room, 'right')" ion-button class="custom">
+              <ion-icon *ngIf="!(room.rightclear)" name="close"></ion-icon>
+              <ion-icon *ngIf="room.rightclear" name="checkmark"></ion-icon>
+              Room {{room.right}}
+
+          </button>
+
+
       </ion-col>
     </ion-row>
-
     <div>
       <br>
     </div>

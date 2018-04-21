@@ -35,7 +35,7 @@ export class ListPage {
           mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     this.fireMap = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-    let markerData = this.afData.list(`fires`).valueChanges();
+    let markerData = this.afData.list(`buildings`).valueChanges();
     markerData.subscribe(markerArr=> {
         markerArr.forEach(markerInfo=> {
             console.log(markerInfo);
