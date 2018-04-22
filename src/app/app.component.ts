@@ -55,9 +55,18 @@ export class MyApp {
               console.log(data)
               if (data>90){
                 //-----SEND TEXT TO PEOPLE------------- 
+                console.log("Data over 90 decibel:>>>>>", data)
+
                 this.afData.database.ref('gunshots').update({
-                  gunshot: true
+
+                  gunshot: Date.now(),
+                  lat:40.5252208,
+                  lng: -74.4411696,
+                  address: "83 Rockafeller Rd, Piscataway Township, NJ 08854, USA",
+                  name: "Rutgers Athletic Center"
+
                 })
+                subscription.unsubscribe();
               }
             }
           );
