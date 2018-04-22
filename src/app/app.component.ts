@@ -13,6 +13,7 @@ import { EmergencyPage } from '../pages/emergency/emergency';
 import { DBMeter } from '@ionic-native/db-meter';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @Component({
@@ -33,6 +34,7 @@ export class MyApp {
       public statusBar: StatusBar,
       public splashScreen: SplashScreen,
       private afAuth: AngularFireAuth,
+      private afData: AngularFireDatabase,
       private dbMeter: DBMeter) {
       this.initializeApp();
 
@@ -77,7 +79,22 @@ export class MyApp {
       try{
           let subscription = this.dbMeter.start().subscribe(
             data => {
-                console.log(data);
+              console.log(data)
+              if (data>90){
+                //-----SEND TEXT TO PEOPLE------------- 
+                console.log("Data over 90 decibel:>>>>>", data)
+
+                this.afData.database.ref('gunshots').update({
+
+                  gunshot: Date.now(),
+                  lat:40.5252208,
+                  lng: -74.4411696,
+                  address: "83 Rockafeller Rd, Piscataway Township, NJ 08854, USA",
+                  name: "Rutgers Athletic Center"
+
+                })
+                subscription.unsubscribe();
+              }
             }
           );
           this.dbMeter.isListening().then(

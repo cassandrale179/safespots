@@ -28,10 +28,10 @@ db.ref('buildings').on("child_added", (snap) => {
     .catch((err) => console.log('Error', err));
 });
 
-db.ref('buildings').on("value", (snap) => {
+db.ref('gunshots').on("child_changed", (snap) => {
     console.log(snap.val());
     client.messages.create({
-        body: `${snap.val().name} is now safe! The address is ${snap.val().address}.`,
+        body: `Possible loud noise heard at Rutgers Athletic Center, 83 Rockafeller Rd, Piscataway Township, NJ 08854, USA. Avoid area if possible.`,
         to: '+15516661231',  // Text this number
         from: '+15595408466' // From a valid Twilio number
     })    
