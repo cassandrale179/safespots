@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -13,7 +15,8 @@ export class EmergencyPage {
     studentsArr: any;
     rescueArr: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+      private alertCtrl: AlertController, private afData: AngularFireDatabase) {
   }
 
 
@@ -34,7 +37,7 @@ export class EmergencyPage {
       }
 
 
-
+      //--------- FOR LOOP TO RESCUE STUDENTS -------
       this.rescueArr = [];
       var names2 = ["Britney", "Kean", "Hong"];
       var status2  = ["Safe", "Safe", "Safe"];
@@ -48,7 +51,22 @@ export class EmergencyPage {
           }
           this.rescueArr.push(s);
       }
+  }
 
+
+  //-------- RESCUE CONTROLLER ---------
+  rescue(){
+      let alert = this.alertCtrl.create({
+        title: 'Rescue',
+        subTitle: 'You are on your way',
+        buttons: [{
+            text: 'Go to Map',
+            handler: () => {
+                console.log('Open map here');
+            }
+        }]
+      });
+      alert.present();
   }
 
 }
