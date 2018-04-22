@@ -45,7 +45,7 @@ export class ShooterPage {
         name: "Anna",
         status: "Unknown",
         miles: "0.1",
-        pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ"
+        pic: "https://www.mills.edu/uniquely-mills/students-faculty/student-profiles/images/student-profile-gabriela-mills-college.jpg"
       }
       ref.child(key).update(obj);
     }
@@ -72,7 +72,6 @@ export class ShooterPage {
           pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ"
         }
         ref.child(key).update(obj);
-
     }
 
 
