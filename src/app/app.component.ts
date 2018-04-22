@@ -10,6 +10,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ShooterPage } from '../pages/shooter/shooter';
 import { EmergencyPage } from '../pages/emergency/emergency';
+import { DBMeter } from '@ionic-native/db-meter';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +22,11 @@ export class MyApp {
 
   pages: Array<{title: string, component: any, icon: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+      public platform: Platform,
+      public statusBar: StatusBar,
+      public splashScreen: SplashScreen,
+      private dbMeter: DBMeter) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -36,10 +41,26 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+
+      //----- DB METER STUFF ----
+      try{
+          let subscription = this.dbMeter.start().subscribe(
+            data => console.log(data)
+          );
+          this.dbMeter.isListening().then(
+            isListening => console.log(isListening)
+          );
+        }
+    catch(e){
+        console.log('Cordova not available'); 
+    }
+
+
+
+
     });
   }
 

@@ -7,10 +7,13 @@ import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-na
 import { Geolocation } from '@ionic-native/geolocation';
 import { HydrantProvider } from '../../providers/hydrant/hydrant';
 
+
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
 
 
 //----------------- HOME PAGE CONSTRUCTOR -------------

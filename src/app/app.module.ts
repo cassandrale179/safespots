@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { HttpModule } from '@angular/http';
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -12,9 +13,11 @@ import { ShooterPage } from '../pages/shooter/shooter';
 import { EmergencyPage } from '../pages/emergency/emergency';
 
 
+//--------- IONIC NATIVE MODULES --------
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
+import { DBMeter } from '@ionic-native/db-meter';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule } from 'angularfire2/database';
@@ -22,7 +25,7 @@ import {AngularFireAuthModule } from 'angularfire2/auth';
 import {IonicStorageModule } from '@ionic/storage'
 
 
-//Modals
+//--------- MODALS STUFF -------
 import { AutocompletePage } from '../pages/home/places-autocomplete';
 import { HydrantProvider } from '../providers/hydrant/hydrant';
 import { HttpClientModule } from '@angular/common/http';
@@ -75,7 +78,8 @@ export const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Geolocation,
     HydrantProvider,
-    HttpClientModule
+    HttpClientModule,
+    DBMeter
   ]
 })
 export class AppModule {}

@@ -8,40 +8,39 @@
 </ion-header>
 
 <ion-content padding>
+        <!-- _____________ FIRST CARD ____________ -->
     <ion-card>
         <img src="../assets/imgs/location.png" />
         <ion-card-content>
-            <p>
-                If you cannot call 911, report your location now.
-            </p>
-            <button ion-button clear> Report My Location</button>
-            <button ion-button color="danger" clear> I'm Injured </button>
+            <p>If you cannot call 911, report your location now.</p>
+            <button ion-button clear (click)="giveLocation()">
+                Report My Location
+            </button>
+            <button ion-button color="danger" clear (click)="giveInjured()">
+                I'm Injured
+            </button>
         </ion-card-content>
     </ion-card>
 
+    <!-- _____________ SECOND CARD ____________ -->
     <ion-card>
         <img src="../assets/imgs/phone.png" />
         <ion-card-content>
-            <p>
-                Your contacts are notified when gunshot is recorded.
-            </p>
+            <p>Your contacts are notified when gunshot is recorded.</p>
             <button ion-button clear> I'm Safe</button>
             <button ion-button color="danger" clear> Add More Contacts </button>
         </ion-card-content>
     </ion-card>
 
-        <ion-card>
-            <img src="../assets/imgs/aid.png" />
-            <ion-card-content>
-                <p>
-                    For first aid resources, follow instructions below.
-                </p>
-                <button ion-button clear> Instructions</button>
-                <button ion-button color="danger" clear> Other Resources</button>
-            </ion-card-content>
-        </ion-card>
-
-
+    <!-- _____________ THIRD CARD ____________ -->
+    <ion-card>
+        <img src="../assets/imgs/aid.png" />
+        <ion-card-content>
+            <p>For first aid resources, follow instructions below.</p>
+            <button ion-button clear> Instructions</button>
+            <button ion-button color="danger" clear> Other Resources</button>
+        </ion-card-content>
+    </ion-card>
 </ion-content>
 
 
