@@ -60,6 +60,7 @@ export class MyApp {
         this.pages =  [
             { title: 'Safe Buildings', component: HomePage, icon: "star" },
             { title: 'Map View ', component: ListPage, icon:"paper-plane" },
+             { title: 'Students In Danger', component: EmergencyPage, icon: "warning" },
             { title: 'Report My Location', component: ShooterPage, icon: "phone-portrait" },
         ]
 
@@ -85,7 +86,7 @@ export class MyApp {
             data => {
               console.log(data)
               if (data>90){
-                //-----SEND TEXT TO PEOPLE------------- 
+                //-----SEND TEXT TO PEOPLE-------------
                 console.log("Data over 90 decibel:>>>>>", data)
 
                 this.afData.database.ref('gunshots').update({

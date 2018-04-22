@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 
 @IonicPage()
@@ -12,6 +13,7 @@ export class ShooterPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private afData: AngularFireDatabase,
     private toastCtrl: ToastController) {
 
   }
@@ -34,6 +36,18 @@ export class ShooterPage {
         console.log('Dismissed toast');
       });
       toast.present();
+
+
+      //--------PUSH TO THE DATABASE--------
+      let ref = this.afData.database.ref(`studentindanger`);
+      let key = "Anna";
+      let obj = {
+        name: "Anna",
+        status: "Unknown",
+        miles: "0.1",
+        pic: "https://www.mills.edu/uniquely-mills/students-faculty/student-profiles/images/student-profile-gabriela-mills-college.jpg"
+      }
+      ref.child(key).update(obj);
     }
 
 
@@ -48,6 +62,18 @@ export class ShooterPage {
           console.log('Dismissed toast');
         });
         toast.present();
+
+        let ref = this.afData.database.ref(`studentindanger`);
+        let key = "Anna";
+        let obj = {
+          name: "Anna",
+          status: "Injured",
+          miles: "0.1",
+          pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ"
         }
+        ref.child(key).update(obj);
+    }
+
+
 
 }

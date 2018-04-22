@@ -34,7 +34,18 @@ export class EmergencyPage {
               pic: "assets/imgs/" + names[i].toLowerCase() + ".jpg"
           }
           this.studentsArr.push(student);
+
       }
+
+      //-------- ADD NEW PERSON FROM DATABASE -----
+      let ref = this.afData.database.ref(`studentindanger`);
+      ref.on("value", snap => {
+          var value = snap.val().Anna;
+          console.log(value);
+          if (value){
+              this.studentsArr.push(value);
+          }
+      });
 
 
       //--------- FOR LOOP TO RESCUE STUDENTS -------
