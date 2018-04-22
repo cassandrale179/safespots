@@ -39,47 +39,9 @@ export class HomePage {
 
     //--------- LOAD ALL THE BUILDINGS ----------
     this.loadBuildings(40.5252208, -74.4411696);
-
-    //--------- GET LOCATION --------
-    // this.getLocation();
-    //this.calcBest();
   }
 
 
-  // async calcBest(){
-
-
-//----------------- LOAD ALL THE FIRE HYDRANTS AND THEN CALCUALTE BETWEEN TWO DISTANCES ------------
-  //  await this.afData.database.ref('firehydrants').once('value',dataSnap =>{
-  //     this.hydData = dataSnap.val();
-  //   })
-
-  //       console.log(this.latitude);
-  //       console.log(this.longitude);
-
-  //       if (!this.latitude) this.latitude = 39.9644620;
-  //       if (!this.longitude) this.longitude = -75.207807;
-
-
-
-        //--------------- LOOP THROUGH THE FIRE HYDRANT DATA AND THEN CALCUALTE THE DIFFERENCES --------
-  //       for(var i in this.hydData){
-  //           var curDist = this.calculateDistance(this.latitude,this.longitude,this.hydData[i].lat,this.hydData[i].lng);
-  //           if (!this.bestHyd){
-  //             this.bestHyd = {
-  //               dist: curDist,
-  //               id: parseInt(i)
-  //             }
-  //           }
-  //           else {
-  //             if(curDist < this.bestHyd.dist){
-  //               this.bestHyd['dist'] = curDist
-  //               this.bestHyd['id'] = parseInt(i);
-  //             }
-  //           }
-  //     }
-  //     console.log("best one is here", this.bestHyd);
-  // }
 
   //------------ OPEN MODAL FOR THE PAGES --------
   openModal(){
@@ -206,7 +168,7 @@ export class HomePage {
         {
           text: 'OK',
           handler: ()=> {
-          
+
             this.afData.database.ref(`buildings/${building.id}`).remove();
 
 

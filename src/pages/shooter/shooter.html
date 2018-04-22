@@ -3,12 +3,70 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Clear Buildings</ion-title>
+    <ion-title>Report Your Location</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid *ngFor = "let room of rooms" class="gridContainer">
+    <ion-card>
+        <img src="../assets/imgs/location.png" />
+        <ion-card-content>
+            <p>
+                If you cannot call 911, report your location now.
+            </p>
+            <button ion-button clear> Report My Location</button>
+            <button ion-button color="danger" clear> I'm Injured </button>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <img src="../assets/imgs/phone.png" />
+        <ion-card-content>
+            <p>
+                Your contacts are notified when gunshot is recorded.
+            </p>
+            <button ion-button clear> I'm Safe</button>
+            <button ion-button color="danger" clear> Add More Contacts </button>
+        </ion-card-content>
+    </ion-card>
+
+        <ion-card>
+            <img src="../assets/imgs/aid.png" />
+            <ion-card-content>
+                <p>
+                    For first aid resources, follow instructions below.
+                </p>
+                <button ion-button clear> Instructions</button>
+                <button ion-button color="danger" clear> Other Resources</button>
+            </ion-card-content>
+        </ion-card>
+
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <ion-grid *ngFor = "let room of rooms" class="gridContainer">
     <ion-row align-items-start>
       <ion-col>
 
@@ -26,7 +84,6 @@
               <ion-icon *ngIf="!(room.rightclear)" name="close"></ion-icon>
               <ion-icon *ngIf="room.rightclear" name="checkmark"></ion-icon>
               Room {{room.right}}
-
           </button>
 
 
@@ -35,6 +92,4 @@
     <div>
       <br>
     </div>
-  </ion-grid>
-
-</ion-content>
+  </ion-grid> -->

@@ -27,33 +27,26 @@ export class ListPage {
 
 
   //---------------- INIT MAP -------------
-  async ngOnInit() {
+      async ngOnInit() {
 
-    var mapProp = {
-         center: new google.maps.LatLng(40.4995488, -74.4443186),
-          zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    this.fireMap = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
-    let markerData = this.afData.list(`buildings`).valueChanges();
-    markerData.subscribe(markerArr=> {
-        markerArr.forEach(markerInfo=> {
-            console.log(markerInfo);
-            let lat = markerInfo['lat']
-            let lng = markerInfo['lng']
-            let marker = new google.maps.Marker({
-                position: new google.maps.LatLng(lat, lng),
-                map: this.fireMap
+        var mapProp = {
+             center: new google.maps.LatLng(40.4995488, -74.4443186),
+              zoom: 15,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        this.fireMap = new google.maps.Map(this.gmapElement.nativeElement, mapProp);
+        let markerData = this.afData.list(`buildings`).valueChanges();
+        markerData.subscribe(markerArr=> {
+            markerArr.forEach(markerInfo=> {
+                console.log(markerInfo);
+                let lat = markerInfo['lat']
+                let lng = markerInfo['lng']
+                let marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(lat, lng),
+                    map: this.fireMap
+                })
+
             })
-
         })
-    })
-
-
-
-}
-
-
-
-
+    }
 }
