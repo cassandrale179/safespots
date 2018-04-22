@@ -34,7 +34,7 @@ export class ListPage {
   //---------------- INIT MAP -------------
       async ngOnInit() {
       let toast = this.toastCtrl.create({
-        message: 'Red marker are gun shots, blue are safe buildings',
+        message: 'Red marker are gun shots, blue are safe',
         duration: 3000,
         position: 'top'
       });
