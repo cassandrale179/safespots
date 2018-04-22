@@ -48,7 +48,7 @@ export class MyApp {
           { title: 'Safe Buildings', component: HomePage, icon: "star" },
           { title: 'Map View ', component: ListPage, icon:"paper-plane" },
           { title: 'Students In Danger', component: EmergencyPage, icon: "warning" },
-          
+
         ];
 
         this.name = "Officer Leo";
@@ -60,18 +60,17 @@ export class MyApp {
         this.pages =  [
             { title: 'Safe Buildings', component: HomePage, icon: "star" },
             { title: 'Map View ', component: ListPage, icon:"paper-plane" },
-             { title: 'Students In Danger', component: EmergencyPage, icon: "warning" },
             { title: 'Report My Location', component: ShooterPage, icon: "phone-portrait" },
         ]
 
         this.name = "Anna";
         this.id = "Rutgers University";
-        this.img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ";
+        this.img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR43llKUWd30DS8RWUi8lfvDyJ2_BzKG8Sbtv2EOkAVrvU5BLyX";
         console.log('This is student');
     }
 
     })
-   
+
   }
 
   initializeApp() {

@@ -45,7 +45,7 @@ export class ShooterPage {
         name: "Anna",
         status: "Unknown",
         miles: "0.1",
-        pic: "https://www.mills.edu/uniquely-mills/students-faculty/student-profiles/images/student-profile-gabriela-mills-college.jpg"
+        pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR43llKUWd30DS8RWUi8lfvDyJ2_BzKG8Sbtv2EOkAVrvU5BLyX"
       }
       ref.child(key).update(obj);
     }
@@ -69,7 +69,7 @@ export class ShooterPage {
           name: "Anna",
           status: "Injured",
           miles: "0.1",
-          pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ"
+          pic: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR43llKUWd30DS8RWUi8lfvDyJ2_BzKG8Sbtv2EOkAVrvU5BLyX"
         }
         ref.child(key).update(obj);
     }
