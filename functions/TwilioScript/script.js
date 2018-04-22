@@ -17,7 +17,18 @@ admin.initializeApp({
 });
 
 var db = admin.database();
-db.ref('buildings').on("child_added", function(snap) {
+db.ref('buildings').on("child_added", (snap) => {
+    console.log(snap.val());
+    client.messages.create({
+        body: `${snap.val().name} is now safe! The address is ${snap.val().address}.`,
+        to: '+15516661231',  // Text this number
+        from: '+15595408466' // From a valid Twilio number
+    })    
+    .then((message) => console.log(message.sid))
+    .catch((err) => console.log('Error', err));
+});
+
+db.ref('buildings').on("value", (snap) => {
     console.log(snap.val());
     client.messages.create({
         body: `${snap.val().name} is now safe! The address is ${snap.val().address}.`,

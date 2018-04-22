@@ -31,7 +31,7 @@ export class EmergencyPage {
               name: names[i],
               status: status[i],
               miles: miles[i],
-              pic: "../assets/imgs/" + names[i] + ".jpg"
+              pic: "assets/imgs/" + names[i].toLowerCase() + ".jpg"
           }
           this.studentsArr.push(student);
       }
@@ -47,7 +47,7 @@ export class EmergencyPage {
               name: names2[i],
               status: status2[i],
               miles: miles2[i],
-              pic: "../assets/imgs/" + names2[i] + ".jpg"
+              pic: "assets/imgs/" + names2[i].toLowerCase() + ".jpg"
           }
           this.rescueArr.push(s);
       }

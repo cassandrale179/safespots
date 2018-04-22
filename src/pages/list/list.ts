@@ -60,7 +60,7 @@ export class ListPage {
                 let marker = new google.maps.Marker({
                     position: new google.maps.LatLng(lat, lng),
                     map: this.fireMap,
-                    icon: '../assets/imgs/blue.png'
+                    icon: 'assets/imgs/blue.png'
                 })
 
             })

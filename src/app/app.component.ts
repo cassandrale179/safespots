@@ -12,6 +12,8 @@ import { ShooterPage } from '../pages/shooter/shooter';
 import { EmergencyPage } from '../pages/emergency/emergency';
 import { DBMeter } from '@ionic-native/db-meter';
 
+import {AngularFireDatabase } from 'angularfire2/database';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -26,6 +28,7 @@ export class MyApp {
       public platform: Platform,
       public statusBar: StatusBar,
       public splashScreen: SplashScreen,
+      private afData: AngularFireDatabase,
       private dbMeter: DBMeter) {
     this.initializeApp();
 
@@ -48,7 +51,15 @@ export class MyApp {
       //----- DB METER STUFF ----
       try{
           let subscription = this.dbMeter.start().subscribe(
-            data => console.log(data)
+            data => {
+              console.log(data)
+              if (data>90){
+                //-----SEND TEXT TO PEOPLE------------- 
+                this.afData.database.ref('gunshots').update({
+                  gunshot: true
+                })
+              }
+            }
           );
           this.dbMeter.isListening().then(
             isListening => console.log(isListening)
