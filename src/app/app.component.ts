@@ -11,35 +11,62 @@ import { LoginPage } from '../pages/login/login';
 import { ShooterPage } from '../pages/shooter/shooter';
 import { EmergencyPage } from '../pages/emergency/emergency';
 import { DBMeter } from '@ionic-native/db-meter';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
 
-import {AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
   rootPage: any = LoginPage;
 
+  //------- VARIABLES AT THE PAGE ------
   pages: Array<{title: string, component: any, icon: any}>;
+  name: any;
+  img: any;
+  id: any;
 
   constructor(
       public platform: Platform,
       public statusBar: StatusBar,
       public splashScreen: SplashScreen,
+      private afAuth: AngularFireAuth,
       private afData: AngularFireDatabase,
       private dbMeter: DBMeter) {
-    this.initializeApp();
+      this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Safe Buildings', component: HomePage, icon: "star" },
-      { title: 'Map View ', component: ListPage, icon:"paper-plane" },
-      { title: 'Students In Danger', component: EmergencyPage, icon: "warning" },
-      { title: 'Report My Location', component: ShooterPage, icon: "phone-portrait" }
-    ];
 
+
+    //--------
+    let user = firebase.auth().currentUser;
+    if (user){
+        console.log('This is police');
+        this.pages = [
+          { title: 'Safe Buildings', component: HomePage, icon: "star" },
+          { title: 'Map View ', component: ListPage, icon:"paper-plane" },
+          { title: 'Students In Danger', component: EmergencyPage, icon: "warning" }
+        ];
+
+        this.name = "Officer Leo";
+        this.id = "Badge #25423";
+        this.img = "https://image.flaticon.com/icons/png/512/190/190624.png";
+        console.log('This is police');
+    }
+    else{
+        this.pages =  [
+            { title: 'Safe Buildings', component: HomePage, icon: "star" },
+            { title: 'Map View ', component: ListPage, icon:"paper-plane" },
+            { title: 'Report My Location', component: ShooterPage, icon: "phone-portrait" },
+        ]
+
+        this.name = "Anna";
+        this.id = "Rutgers University";
+        this.img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ";
+        console.log('This is student');
+    }
   }
 
   initializeApp() {
@@ -75,12 +102,8 @@ export class MyApp {
           );
         }
     catch(e){
-        console.log('Cordova not available'); 
+        console.log('Cordova not available');
     }
-
-
-
-
     });
   }
 

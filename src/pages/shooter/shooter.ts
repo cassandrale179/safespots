@@ -39,19 +39,15 @@ export class ShooterPage {
 
      //--------- GIVE INJURY REPORT --------
     giveInjured() {
-    let toast = this.toastCtrl.create({
-      message: 'Medical Emergency has been contacted for you ',
-      duration: 3000,
-      position: 'top'
-    });
-    toast.onDidDismiss(() => {
-      console.log('Dismissed toast');
-    });
-    toast.present();
-    }
-
-
-
-
+        let toast = this.toastCtrl.create({
+          message: 'Medical Emergency has been contacted for you ',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.onDidDismiss(() => {
+          console.log('Dismissed toast');
+        });
+        toast.present();
+        }
 
 }
