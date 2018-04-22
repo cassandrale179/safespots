@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { ShooterPage } from '../pages/shooter/shooter';
+import { EmergencyPage } from '../pages/emergency/emergency';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -16,9 +17,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation';
 
 import {AngularFireModule} from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { IonicStorageModule } from '@ionic/storage'
+import {AngularFireDatabaseModule } from 'angularfire2/database';
+import {AngularFireAuthModule } from 'angularfire2/auth';
+import {IonicStorageModule } from '@ionic/storage'
 
 
 //Modals
@@ -42,6 +43,7 @@ export const firebaseConfig = {
     ListPage,
     LoginPage,
     ShooterPage,
+    EmergencyPage,
     AutocompletePage,
 
   ],
@@ -62,6 +64,7 @@ export const firebaseConfig = {
     ListPage,
     LoginPage,
     ShooterPage,
+    EmergencyPage,
     AutocompletePage,
 
   ],
