@@ -2,10 +2,15 @@ import { Component } from '@angular/core';
 import { NavController, ModalController, AlertController } from 'ionic-angular';
 import { AutocompletePage } from './places-autocomplete';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HydrantProvider } from '../../providers/hydrant/hydrant';
+import { firebaseConfig } from '../../app/app.module';
+import { LoginPage} from '../../pages/login/login';
+
+import * as firebase from 'firebase';
 
 
 @Component({
@@ -28,6 +33,7 @@ export class HomePage {
       dist: number,
     };
     buildingArr: any[];
+    user: any;
 
 
 //-------- CONSTRUCTOR FOR CALCULATING THE HOME.TS PAGE -----------
@@ -37,10 +43,12 @@ export class HomePage {
     private geolocation: Geolocation,
     public hydInfo: HydrantProvider,
     private alertCtrl: AlertController,
+    private afAuth: AngularFireAuth,
     private LaunchNavigator: LaunchNavigator) {
 
     //--------- LOAD ALL THE BUILDINGS ----------
     this.loadBuildings(40.5252208, -74.4411696);
+    this.user = firebase.auth().currentUser;;
   }
 
 
@@ -179,5 +187,10 @@ export class HomePage {
       ]
     })
     alert.present();
+  }
+
+  signOut() {
+    firebase.auth().signOut();
+    this.navCtrl.setRoot(LoginPage);
   }
 }

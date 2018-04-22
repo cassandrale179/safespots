@@ -41,13 +41,14 @@ export class MyApp {
 
 
     //--------
-    let user = firebase.auth().currentUser;
-    if (user){
+    firebase.auth().onAuthStateChanged(user=> {
+      if (user){
         console.log('This is police');
         this.pages = [
           { title: 'Safe Buildings', component: HomePage, icon: "star" },
           { title: 'Map View ', component: ListPage, icon:"paper-plane" },
-          { title: 'Students In Danger', component: EmergencyPage, icon: "warning" }
+          { title: 'Students In Danger', component: EmergencyPage, icon: "warning" },
+          
         ];
 
         this.name = "Officer Leo";
@@ -67,6 +68,9 @@ export class MyApp {
         this.img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwH6DalS_KpcvdezZT-tymCO2Spog0pW1g8ySWMhAPAohnxKNJ";
         console.log('This is student');
     }
+
+    })
+   
   }
 
   initializeApp() {
