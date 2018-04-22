@@ -1,16 +1,42 @@
-<!--
-  Generated template for the EmergencyPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Emergency Alerts</ion-title>
+    <ion-title>Students in Danger</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding>
+
+
+<ion-content>
+
+<!--  ___________  STUDENT IN BAD CONDITION ___________ -->
+    <ion-item-group>
+    <ion-item-divider color="light">STUDENTS IN DANGER</ion-item-divider>
+      <ion-item *ngFor="let student of studentsArr">
+        <ion-thumbnail item-start>
+          <img src="{{student.pic}}">
+      </ion-thumbnail>
+        <h2>{{student.name}}</h2>
+        <h3>Within <b>{{student.miles}} miles </b>of gun shot</h3>
+        <h4><b>Status: </b> {{student.status}}</h4>
+        <p><b>Location: </b> 669 Brooklyn St, NJ 08648</p>
+        <button ion-button clear item-end>Rescue</button>
+      </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+
+<!--  ___________  STUDENT IN GOOD CONDITION ___________ -->
+  <ion-item-divider color="light">STUDENTS BEING RESCUED</ion-item-divider>
+    <ion-item *ngFor="let s of rescueArr">
+      <ion-thumbnail item-start>
+        <img src="{{s.pic}}">
+    </ion-thumbnail>
+      <h2>{{s.name}}</h2>
+      <h3>Within <b>{{s.miles}} miles </b>of gun shot</h3>
+      <h4><b>Status: </b> {{s.status}}</h4>
+      <p><b>Location: </b> 669 Brooklyn St, NJ 08648</p>
+      <button ion-button clear item-end>View</button>
+    </ion-item>
+</ion-item-group>
 </ion-content>
